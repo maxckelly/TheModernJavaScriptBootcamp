@@ -31,6 +31,11 @@ Person.prototype.setName = function(fullName) {
 // ---------------------
 // The below creates a new person and logs it to the console. 
 const me = new Person('Max', 'Kelly', 21, ['surfing', 'SnowBoarding'])
+
+me.getBio = function () {
+    return 'This is fake!'
+}
+
 me.setName('Andrew Smith')
 console.log(me.getBio())
 
