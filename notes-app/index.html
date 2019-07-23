@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Notes App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+</head>
+<body>
+    <h1> Hello World! </h1>
+    <h1 id="date"> </h1>
+    <label> <!-- The label tag easily allows us to add text next to the element -->
+        Search: <input id="search-text" type="text" placeholder="Search your notes here">
+    </label>
+    <select id="filter-by">
+        <option value="byEdited"> Sort by last edited  </option>
+        <option value="byCreated"> Sort by recently created </option>
+        <option value="byAlphabetical"> Sort alphabetically </option>
+    </select>
+    <div id="notes"></div>
+    <p id="edited"></p>
+    <button id="create-button"> Create Note </button>
+
+    
+    <!-- This is a checkbox example
+    <label>  The label tag easily allows us to add text next to the element 
+        <input id="for-fun" type="checkbox"> Check me for fun 
+    </label>
+     -->
+
+   <!-- The below is a form to submit a note 
+    <form id="name-form">
+        <input type="text" placeholder="First Name" name="firstName">
+        <button> Submit </button>
+    </form> 
+    -->
+    <script src="uuid4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
+    <script src="notes-function.js"></script>
+    <script src="notes-app.js"></script>
+</body>
+
+
+</html>
