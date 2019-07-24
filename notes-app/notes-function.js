@@ -106,7 +106,7 @@ const renderNotes = (notes, filters) => {
     notes = sortNotes(notes, filters.sortBy)
     const filteredNotes = notes.filter( (note) => note.title.toLowerCase().includes(filters.searchText.toLowerCase()));
 
-    document.querySelector("#notes").innerHTML = ""; // This code allows us to whip the text that isn't relevant. This re renders the list
+    document.querySelector("#notes").innerHTML = ""; // This code allows us to wipe the text that isn't relevant. This re renders the list
 
     filteredNotes.forEach((note) => {
         const noteEl = generateNoteDOM(note); // This pulls code from notes-function.js
