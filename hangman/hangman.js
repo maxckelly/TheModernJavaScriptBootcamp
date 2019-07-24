@@ -1,11 +1,6 @@
 // No guesses? -> ***
 // Guessed "c", "b" and "t"? -> c*t
 
-// Create a method for making a guess 
-// 1. Should accept a character for guessing
-// 2. Should add unique guesses to list of guesses
-// 3. Should decrement the guesses left if a unique guess isn't a match
-
 const Hangman = function (word, remainingGuesses) {
     const wordAlteration = (word.toLowerCase()).split('')
     this.word = word.toLowerCase().split('')
@@ -44,25 +39,6 @@ Hangman.prototype.makeGuess = function (guess){
     }
 }
     
-//     else if (this.guessedLetters.length === 0 && !badGuess) {
-//         this.guessedLetters.push(aGuess)
-//     // If not empty
-//     } else {
-//         this.guessedLetters.forEach( (item) => {
-//             if (this.guessedLetters.includes(aGuess)) {
-//                 // do nothing - already guessed this
-//             } else if (this.word.includes(aGuess)) {
-//                 console.log('good guess!')
-//                 this.guessedLetters.push(aGuess)
-//             } else {
-//                 // incorrect guess - lose 1 guess
-//                 this.guessedLetters.push(aGuess)
-//                 this.guesses = this.guesses -1 
-//            }
-//         })
-//     }
-// }
-
 const game1 = new Hangman('Cat', 2)
 console.log(game1.getPuzzle())
 console.log(game1.remainingGuesses)
