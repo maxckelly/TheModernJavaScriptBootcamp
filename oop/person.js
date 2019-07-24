@@ -1,43 +1,37 @@
-// Prototypal Inheritance - 
+// Prototypal Inheritance
 
-// The below is a constructor function. This allows us to set up unique objects and still let them be flexible
-// You cannot use an arrow function for this as it does not bind this.
-const Person = function (firstName, lastName, age, likes = []) { // If likes isn't provided then create a default value
-    this.firstName = firstName
-    this.lastName = lastName
-    this.age = age
-    this.likes = likes
-}
+//---- Class Syntax -----
+// What makes the person class is the new way to create a constructor function. You define the constructor inside the class instead of inside the function. 
+// We never need to manually call the constructor - it gets called automatically when we use the new operator with the class name picked out
+class Person {
 
-//------ Prototypal Inheritance ------
-// Prototype adds this to all the instances
-Person.prototype.getBio = function () {
-    let bio = `${this.firstName} is ${this.age}.`
+  constructor(firstName, lastName, age, likes = []) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.likes = likes;
+    }
 
-    // We are able to use an arrow function because the parent is able to access the this statement.
-    // Arrow functions don't bind this.
-    this.likes.forEach((like) => {
-        bio += ` ${this.firstName} likes ${like}`
-    })
+  getBio() {
+        let bio = `${this.firstName} is ${this.age}.`;
 
-    return bio;
-}
+        this.likes.forEach(like => {
+        bio += ` ${this.firstName} likes ${like}`;
+        });
 
-Person.prototype.setName = function(fullName) {
-    const names = fullName.split(' ') // This .split allows us to split a string and make an array. We're currently splitting on a space. This would create just Andrew
-    this.firstName = names[0]
-    this.lastName = [1]
+        return bio;
+    }
+
+  setName(fullName) {
+        const names = fullName.split(" "); // This .split allows us to split a string and make an array. We're currently splitting on a space. This would create just Andrew
+        this.firstName = names[0];
+        this.lastName = [1];
+    }
 }
 // ---------------------
 // The below creates a new person and logs it to the console. 
 const me = new Person('Max', 'Kelly', 21, ['surfing', 'SnowBoarding'])
-
-me.getBio = function () {
-    return 'This is fake!'
-}
-
-me.setName('Andrew Smith')
-console.log(me.getBio())
-
+    me.setName('Andrew Smith')
+    console.log(me.getBio())
 const person2 = new Person('John', 'Boob', 29)
-console.log(person2.getBio())
+    console.log(person2.getBio())
