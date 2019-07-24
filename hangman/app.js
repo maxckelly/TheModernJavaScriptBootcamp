@@ -1,23 +1,16 @@
-// 1. Setup new "status" property with initial value of "playing" 
-// 2. Create method for recalculating status to "playing", "finished" or "Failed" 
-// 3. Call that method after a guess is processed 
-// 4. Use console.log to print the status
 
 const puzzleEl = document.querySelector("#puzzle"); // Selects the id element in html file.
-const guessesEl = document.querySelector("#guesses"); // Selects the id element in html file.
 const statusEl = document.querySelector('#status')
 const game1 = new Hangman("Cat", 2);
 
 puzzleEl.textContent = game1.getPuzzle();
-guessesEl.textContent = game1.remainingGuesses;
-statusEl.textContent = game1.status
+statusEl.textContent = game1.getStatusMessage()
 
 window.addEventListener("keypress", function(e) {
   const guess = String.fromCharCode(e.charCode);
   game1.makeGuess(guess);
   puzzleEl.textContent = game1.getPuzzle();
-  guessesEl.textContent = game1.remainingGuesses;
-  statusEl.textContent = game1.status
+  statusEl.textContent = game1.getStatusMessage()
 });
 
 
