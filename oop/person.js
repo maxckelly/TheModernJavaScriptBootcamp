@@ -67,16 +67,6 @@ class Student extends Person {
     }
 }
 
-
-// 1. Create a class for students
-// 2. Track student grade 0 - 100
-// 3. Override bio to print a passing or failing message. 70 and above "Andrew is passing the test"
-// 4. Create "UpdateGrade" that takes the amount to add or remove from the grade.
-
-// Create student 
-// Print status 
-// Change grade to change status.
-
 const me = new Student('Max', 'Kelly', 21, 10, 'English')
 console.log(me.getBio())
 me.updateGrades(+80);
