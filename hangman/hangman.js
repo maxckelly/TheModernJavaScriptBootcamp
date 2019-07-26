@@ -11,7 +11,7 @@ class Hangman {
 
     // The below is a status report. It will either be finished of failed depending on the guesses you make.
     calculateStatus() {
-        const finished = this.word.every(letter => this.guessedLetters.includes(letter));
+        const finished = this.word.every(letter => this.guessedLetters.includes(letter) || letter === ' ');
 
         if (this.remainingGuesses === 0) {
             this.status = "Failed"; // .join - Joins the array together so it doesn't come out like c,a,t instead cat
@@ -37,7 +37,7 @@ class Hangman {
         let puzzle = "";
 
         this.word.forEach(letter => {
-            if (this.guessedLetters.includes(letter) ||letter === " ") {
+            if (this.guessedLetters.includes(letter) ||letter === ' ') {
                 puzzle += letter;
             } else {
                 puzzle += "*";

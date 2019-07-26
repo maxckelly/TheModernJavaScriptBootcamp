@@ -1,7 +1,7 @@
 
 const puzzleEl = document.querySelector("#puzzle"); // Selects the id element in html file.
 const statusEl = document.querySelector('#status')
-const game1 = new Hangman("Cat", 2);
+const game1 = new Hangman("Cat Parts", 2);
 
 puzzleEl.textContent = game1.puzzle;
 statusEl.textContent = game1.statusMessage
