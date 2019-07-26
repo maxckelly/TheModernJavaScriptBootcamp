@@ -3,14 +3,14 @@ const puzzleEl = document.querySelector("#puzzle"); // Selects the id element in
 const statusEl = document.querySelector('#status')
 const game1 = new Hangman("Cat", 2);
 
-puzzleEl.textContent = game1.getPuzzle();
-statusEl.textContent = game1.getStatusMessage()
+puzzleEl.textContent = game1.puzzle;
+statusEl.textContent = game1.statusMessage
 
 window.addEventListener("keypress", function(e) {
   const guess = String.fromCharCode(e.charCode);
   game1.makeGuess(guess);
-  puzzleEl.textContent = game1.getPuzzle();
-  statusEl.textContent = game1.getStatusMessage()
+  puzzleEl.textContent = game1.puzzle;
+  statusEl.textContent = game1.statusMessage
 });
 
 

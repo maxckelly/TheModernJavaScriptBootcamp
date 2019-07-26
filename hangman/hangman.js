@@ -1,5 +1,6 @@
 // No guesses? -> ***
 // Guessed "c", "b" and "t"? -> c*t
+
 class Hangman {
     constructor(word, remainingGuesses) {
         this.word = word.toLowerCase().split("");
@@ -21,7 +22,7 @@ class Hangman {
         }
     }
 
-    getStatusMessage() {
+     get statusMessage() {
         if (this.status === "Playing") {
             return `Guesses left: ${this.remainingGuesses}`;
         } else if (this.status === "Failed") {
@@ -31,7 +32,7 @@ class Hangman {
         }
     }
 
-    getPuzzle() {
+    get puzzle() {
 
         let puzzle = "";
 

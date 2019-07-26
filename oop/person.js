@@ -23,10 +23,13 @@ class Person {
         return bio;
     }
 
-  setName(fullName) {
-        const names = fullName.split(" "); // This .split allows us to split a string and make an array. We're currently splitting on a space. This would create just Andrew
+  set fullName(fullName) {
+        const names = fullName.split(' '); // This .split allows us to split a string and make an array. We're currently splitting on a space. This would create just Andrew
         this.firstName = names[0];
         this.lastName = names[1];
+    }
+    get fullName () {
+        return `${this.firstName} ${this.lastName}`
     }
 }
 
@@ -38,7 +41,7 @@ class Employee extends Person {
     }
     getBio() {
         // Max is a Helicopter Pilot
-        return `${this.firstName} ${this.lastName} is a ${this.position}.`
+        return `${this.fullName} is a ${this.position}.`
     }
     getYearsLeft() {
         return 65 - this.age
@@ -67,10 +70,10 @@ class Student extends Person {
     }
 }
 
-const me = new Student('Max', 'Kelly', 21, 10, 'English')
+const me = new Employee('Max', 'Kelly', 21, 'CEO', 'English')
+me.fullName = 'Alex John'
 console.log(me.getBio())
-me.updateGrades(+80);
-console.log(me.getBio())
+//me.updateGrades(+80);
 
 // ---------------------
 // The below creates a new person and logs it to the console. 
