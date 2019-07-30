@@ -12,32 +12,22 @@ window.addEventListener("keypress", (e) => {
   statusEl.textContent = game1.statusMessage
 });
 
-getPuzzle((error, puzzle) => {
+getPuzzle("5", (error, puzzle) => {
   if (error) {
     console.log(`Error: ${error}`)
   } else {
     console.log(puzzle)
   }
 })
-
 // The below pulls data from restcountries url and then displays the countryCode name in the console. 
 
-// const countryCode = "US";
-// const countryRequest = new XMLHttpRequest() 
-
-// countryRequest.addEventListener('readystatechange', (e) => {
-//   if(e.target.readyState === 4 && e.target.status === 200) {
-//     const data = JSON.parse(e.target.responseText)
-//     const country = data.find((country) => country.alpha2Code === countryCode) // alpha2Code is the request that is in the array.
-//     console.log(country.name) // This prints the country name 
-//   } else if (e.target.readyState === 4) {
-//     console.log('An error has taken place')
-//   }
-// })
-
-// countryRequest.open('GET', `https://restcountries.eu/rest/v2/all`) // This is the URL that we request the countries from.
-// countryRequest.send()
-
+getCountry("US", (error, country) => {
+  if (error) {
+    console.log(`Error: ${error}`)
+  } else {
+    console.log(`Country Name: ${country.name}`)
+  }
+})
 
 //----- Primitive value: string, number, boolean, null, undefined -----
 
