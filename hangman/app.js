@@ -1,6 +1,3 @@
-// HTTP (Hypertext Transfer Protocol)
-  // Request - What we want to do 
-  // Response - What was actually done 
 const puzzleEl = document.querySelector("#puzzle"); // Selects the id element in html file.
 const statusEl = document.querySelector('#status')
 const game1 = new Hangman("Cat Parts", 2);
@@ -24,6 +21,7 @@ getPuzzle((error, puzzle) => {
 })
 
 // The below pulls data from restcountries url and then displays the countryCode name in the console. 
+
 // const countryCode = "US";
 // const countryRequest = new XMLHttpRequest() 
 

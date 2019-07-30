@@ -1,3 +1,6 @@
+// HTTP (Hypertext Transfer Protocol)
+  // Request - What we want to do 
+  // Response - What was actually done 
 const getPuzzle = (callBack) => {
     // Making an HTTP request 
     const request = new XMLHttpRequest()
