@@ -15,35 +15,32 @@ window.addEventListener("keypress", (e) => {
   statusEl.textContent = game1.statusMessage
 });
 
-// Making an HTTP request 
-const request = new XMLHttpRequest()
-
-request.addEventListener('readystatechange', (e) => {
-  if(e.target.readyState === 4 && e.target.status === 200) {
-    const data = JSON.parse(e.target.responseText)
-    console.log(data);
-  } else if (e.target.readyState === 4) {
-    console.log('An error has taken place')
+getPuzzle((error, puzzle) => {
+  if (error) {
+    console.log(`Error: ${error}`)
+  } else {
+    console.log(puzzle)
   }
 })
 
-request.open('GET',`http://puzzle.mead.io/puzzle`)
-request.send()
-
 // The below pulls data from restcountries url and then displays the countryCode name in the console. 
-const countryCode = "US";
-const countryRequest = new XMLHttpRequest() 
+// const countryCode = "US";
+// const countryRequest = new XMLHttpRequest() 
 
-countryRequest.addEventListener('readystatechange', (e) => {
-  if(e.target.readyState === 4 && e.target.status === 200) {
-    const data = JSON.parse(e.target.responseText)
-    const country = data.find((country) => country.alpha2Code === countryCode) // alpha2Code is the request that is in the array.
-    console.log(country.name) // This prints the country name 
-  } 
-})
+// countryRequest.addEventListener('readystatechange', (e) => {
+//   if(e.target.readyState === 4 && e.target.status === 200) {
+//     const data = JSON.parse(e.target.responseText)
+//     const country = data.find((country) => country.alpha2Code === countryCode) // alpha2Code is the request that is in the array.
+//     console.log(country.name) // This prints the country name 
+//   } else if (e.target.readyState === 4) {
+//     console.log('An error has taken place')
+//   }
+// })
 
-countryRequest.open('GET', `https://restcountries.eu/rest/v2/all`) // This is the URL that we request the countries from.
-countryRequest.send()
+// countryRequest.open('GET', `https://restcountries.eu/rest/v2/all`) // This is the URL that we request the countries from.
+// countryRequest.send()
+
+
 //----- Primitive value: string, number, boolean, null, undefined -----
 
 // Object: myObject --> product --> Object.prototype --> null // This is how the below code will run it will go through product if nothing there it then goes through object.prototype if nothing there it returns undefined
