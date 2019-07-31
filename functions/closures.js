@@ -45,7 +45,8 @@ const createTipper = (tipPercent) => {
 const tipper15 = createTipper(0.15)
 const tipper20 = createTipper(0.20)
 console.log(tipper20(100))
-console.log(tipper15(152));
+console.log(tipper15(152))
+
 // When printMessage was defined it had access to message so its always going to have access to message.
 // const myFunction = () => {
 //     const message = 'This is my message'
