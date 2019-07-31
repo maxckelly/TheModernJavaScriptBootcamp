@@ -12,21 +12,17 @@ window.addEventListener("keypress", (e) => {
   statusEl.textContent = game1.statusMessage
 });
 
-getPuzzle("5", (error, puzzle) => {
-  if (error) {
-    console.log(`Error: ${error}`)
-  } else {
-    console.log(puzzle)
-  }
+getPuzzle('5').then((puzzle) => {
+  console.log(puzzle)
+}, (err) => {
+  console.log(`Error: ${err}`)
 })
-// The below pulls data from restcountries url and then displays the countryCode name in the console. 
 
-getCountry("US", (error, country) => {
-  if (error) {
-    console.log(`Error: ${error}`)
-  } else {
-    console.log(`Country Name: ${country.name}`)
-  }
+// The below pulls data from restcountries url and then displays the countryCode name in the console. 
+getCountry('AU').then((country) => {
+  console.log(`Country Name: ${country.name}`); 
+}, (error) => {
+  console.log(`Error: ${error}`)
 })
 
 //----- Primitive value: string, number, boolean, null, undefined -----

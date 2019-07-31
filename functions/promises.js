@@ -18,12 +18,14 @@ getDataCallBack((err, data) => {
 // Promises expect a single argument. The promise function is a function to handle errors. 
 // The benefits for using the promise function is that its clear and straight to the point.
 // Its impossible to run more than just one of these functions. You cannot resolve twice, reject twice or resolve and reject.
-const myPromise = new Promise((resolve, reject) => {
+const getDataPromise = (data) => new Promise((resolve, reject) => {
     setTimeout(() => {
-        //resolve('This is the promise data')
-        reject('This is my promise error')
-    }, 2000)
+        resolve(`This is my success data: ${data}`)
+        //reject("This is my promise error");
+      }, 2000);
 })
+
+const myPromise = getDataPromise()
 
 myPromise.then((data) => {
     console.log(data) 
