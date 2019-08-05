@@ -12,12 +12,14 @@ window.addEventListener("keypress", (e) => {
   statusEl.textContent = game1.statusMessage
 });
 
+// Fetch
 getPuzzle('2').then((puzzle) => {
   console.log(puzzle)
 }).catch((err) => {
   console.log(`Error: ${err}`)
 })
 
+// Fetch
 // The below pulls data from restcountries url and then displays the countryCode name in the console. 
 getCountry('US').then((country) => {
   console.log(`Country Name: ${country.name}`); 
@@ -25,19 +27,7 @@ getCountry('US').then((country) => {
   console.log(`Error: ${err}`)
 })
 
-// Fetch
 
-// fetch('http://puzzle.mead.io/puzzle', {}).then((response) => {
-//   if (response.status === 200) {
-//     return response.json()
-//   } else {
-//     throw new Error('Unable to fetch the puzzle')
-//   }
-// }).then((data) => {
-//   console.log(data.puzzle)
-// }).catch((error) => {
-//   console.log(error)
-// })
 
 //----- Primitive value: string, number, boolean, null, undefined -----
 
