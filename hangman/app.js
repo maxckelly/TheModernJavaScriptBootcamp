@@ -18,12 +18,12 @@ getPuzzle('2').then((puzzle) => {
   console.log(`Error: ${err}`)
 })
 
-// // The below pulls data from restcountries url and then displays the countryCode name in the console. 
-// getCountry('AU').then((country) => {
-//   console.log(`Country Name: ${country.name}`); 
-// }, (error) => {
-//   console.log(`Error: ${error}`)
-// })
+// The below pulls data from restcountries url and then displays the countryCode name in the console. 
+getCountry('US').then((country) => {
+  console.log(`Country Name: ${country.name}`); 
+}).catch((err) => {
+  console.log(`Error: ${err}`)
+})
 
 // Fetch
 
