@@ -29,6 +29,15 @@ const getCountry = (countryCode) => {
     }) 
 }
 
+const getLocation = () => {
+    return fetch(`https://ipinfo.io/json?token=a7bf55244ed5fb`).then((response) => {
+        if (response.status === 200) {
+            return response.json()
+        } else {
+            throw new Error ('Unable to fetch your location')
+        }
+    })
+}
 // The below is another way to fetch data from a API - The fetch way is the preferred way.  
 
 // const getCountry = (countryCode) => new Promise((resolve, reject) => {

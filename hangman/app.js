@@ -27,6 +27,20 @@ getCountry('US').then((country) => {
   console.log(`Error: ${err}`)
 })
 
+getLocation().then((location) => {
+  return getCountry(location.country)
+}).then((country) => {
+  console.log(country.name)
+}).catch((err) => {
+  console.log(`Error ${err}`)
+})
+
+getLocation().then((location) => {
+  getCountry(location.country).then(country => {
+    console.log(`My current location is ${location.city}, ${location.country}, ${location.region}, ${location.loc}`)
+  })
+})
+
 
 
 //----- Primitive value: string, number, boolean, null, undefined -----
