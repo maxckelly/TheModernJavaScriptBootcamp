@@ -2,7 +2,7 @@
   // Request - What we want to do 
   // Response - What was actually done 
 
-//-----FETCHING PUZZLE API -----
+//-----FETCHING PUZZLE API /w ASYNC -----
 const getPuzzle = async (wordCount) => {
     const response = await fetch(`http://puzzle.mead.io/puzzle?wordCount=${wordCount}`)
     
@@ -14,6 +14,8 @@ const getPuzzle = async (wordCount) => {
     }
   
 }
+
+//-----FETCHING PUZZLE API /w PROMISE -----
 
 const getPuzzleOld = (wordCount) => {
     return fetch(`http://puzzle.mead.io/puzzle?wordCount=${wordCount}`).then((response) => {
@@ -29,26 +31,32 @@ const getPuzzleOld = (wordCount) => {
 
 //--- FETCHING COUNTRIES API ----
 
-const getCountry = (countryCode) => {
-    return fetch(`https://restcountries.eu/rest/v2/all`).then((response) => {
-        if (response.status === 200) {
-            return response.json()
-        } else {
-            throw new Error ('Unable to fetch the country')
-        }
-    }).then((data) => {
+const getCountry = async (countryCode) => {
+
+    const response = await fetch(`https://restcountries.eu/rest/v2/all`)
+
+    if (response.status === 200) {
+        const data = await response.json()
         return data.find((country) => country.alpha2Code === countryCode)
-    }) 
+    } else {
+        throw new Error('Unable to get country')
+    }
 }
 
-const getLocation = () => {
-    return fetch(`https://ipinfo.io/json?token=a7bf55244ed5fb`).then((response) => {
-        if (response.status === 200) {
-            return response.json()
-        } else {
-            throw new Error ('Unable to fetch your location')
-        }
-    })
+const getLocation = async () => {
+    const response = await fetch(`https://ipinfo.io/json?token=a7bf55244ed5fb`)
+
+    if (response.status === 200) {
+        return response.json()
+    } else {
+        throw new Error('Unable to fetch your location')
+    }
+}
+
+const getCurrentCountry = async () => {
+    const location = await getLocation()
+    const country = await getCountry(location.country)
+    return country 
 }
 // The below is another way to fetch data from a API - The fetch way is the preferred way.  
 
