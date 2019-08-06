@@ -9,8 +9,14 @@ window.addEventListener("keypress", (e) => {
 });
 
 const render = () => {
-  puzzleEl.textContent = game1.puzzle;
+  puzzleEl.innerHTML = '';
   statusEl.textContent = game1.statusMessage;
+
+  game1.puzzle.split('').forEach((letter) => {
+    const letterEl = document.createElement('span')
+    letterEl.textContent = letter
+    puzzleEl.appendChild(letterEl)
+  })
 }
 
 // Renders a new game if this function is ran
