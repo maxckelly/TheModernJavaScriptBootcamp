@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="/styles/styles.css">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Notes App</title>
@@ -8,16 +9,23 @@
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
 </head>
 <body>
-    <h1> Hello World! </h1>
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title"> Notes App! </h1>
+            <h2 class="header__subtitle"> Take notes and never forget</h2>
+        </div>
+    </header>
+    <div class="actions">
+        <div class"actions__container">
+            <input id="search-text" type="text" class="input" placeholder="Search your notes here">
+            <select id="filter-by" class="dropdown">
+                <option value="byEdited"> Sort by last edited </option>
+                <option value="byCreated"> Sort by recently created </option>
+                <option value="byAlphabetical"> Sort alphabetically </option>
+            </select>
+        </div>
+    </div>
     <h1 id="date"> </h1>
-    <label> <!-- The label tag easily allows us to add text next to the element -->
-        Search: <input id="search-text" type="text" placeholder="Search your notes here">
-    </label>
-    <select id="filter-by">
-        <option value="byEdited"> Sort by last edited  </option>
-        <option value="byCreated"> Sort by recently created </option>
-        <option value="byAlphabetical"> Sort alphabetically </option>
-    </select>
     <div id="notes"></div>
     <p id="edited"></p>
     <button id="create-button"> Create Note </button>
@@ -35,10 +43,10 @@
         <button> Submit </button>
     </form> 
     -->
-    <script src="uuid4.min.js"></script>
+    <script src="/scripts/uuid4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
-    <script src="notes-function.js"></script>
-    <script src="notes-app.js"></script>
+    <script src="/scripts/notes-function.js"></script>
+    <script src="/scripts/notes-app.js"></script>
 </body>
 
 
