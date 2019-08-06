@@ -36,32 +36,40 @@ const removeNote =  (id) => {
 }
 
 // Generate the DOM Structure for a note
-const generateNoteDOM =  (note) => {
-    const noteEl = document.createElement('div');
-    const textEl = document.createElement('a'); // this makes it so the text is now an anchor tag linking them to edit.html
-    const button = document.createElement('button');
+const generateNoteDOM = note => {
+  const noteEl = document.createElement("a");
+  const textEl = document.createElement("p"); // this makes it so the text is now an anchor tag linking them to edit.html
+  const button = document.createElement("button");
+  const statusEl = document.createElement("p");
 
-    // Setup the remove note button 
-    button.textContent = 'X'
-    noteEl.appendChild(button);
-    button.addEventListener('click', function (e) {
-        removeNote(note.id)
-        saveNotes(notes)
-        renderNotes(notes, filters)
-    })
+  // Setup the remove note button
+  button.textContent = "X";
+  noteEl.appendChild(button);
+  button.addEventListener("click", function(e) {
+    removeNote(note.id);
+    saveNotes(notes);
+    renderNotes(notes, filters);
+  });
 
-    // Setup the note title text
-    if (note.title.length > 0) {
-        textEl.textContent = note.title;
-    } else {
-        textEl.textContent = "Unnamed note";
-    }
-    
-    textEl.setAttribute('href', `/edit.html#${note.id}`) // This changes the text to be a anchor tag linking them to edit.html and attaches the note id onto the href
-    noteEl.appendChild(textEl);
-    
-    return noteEl
-}
+  // Setup the note title text
+  if (note.title.length > 0) {
+    textEl.textContent = note.title;
+  } else {
+    textEl.textContent = "Unnamed note";
+  }
+  textEl.classList.add('list-item__title')
+  noteEl.appendChild(textEl);
+
+  // Setup the link
+  noteEl.setAttribute("href", `/edit.html#${note.id}`); // This changes the text to be a anchor tag linking them to edit.html and attaches the note id onto the href
+  noteEl.classList.add('list-item') // classList.add - adds a class list to a javascript 
+  
+  // Setup the status message
+  statusEl.textContent = generateLastEdited(note.updatedAt)
+  statusEl.classList.add('list-item__subtitle')
+  noteEl.appendChild(statusEl)
+  return noteEl;
+};
 
 // Sort your notes by one of three ways
 const sortNotes =  (notes, sortBy) => {
@@ -103,15 +111,25 @@ const sortNotes =  (notes, sortBy) => {
 // Render application notes 
 // The below code takes all of the notes and filters to which one is relevant
 const renderNotes = (notes, filters) => {
+    const notesEl = document.querySelector("#notes")
     notes = sortNotes(notes, filters.sortBy)
     const filteredNotes = notes.filter( (note) => note.title.toLowerCase().includes(filters.searchText.toLowerCase()));
 
-    document.querySelector("#notes").innerHTML = ""; // This code allows us to wipe the text that isn't relevant. This re renders the list
+    notesEl.innerHTML = ''
 
-    filteredNotes.forEach((note) => {
-        const noteEl = generateNoteDOM(note); // This pulls code from notes-function.js
-        document.querySelector("#notes").appendChild(noteEl);
-    });
+    if (filteredNotes.length > 0) {
+        filteredNotes.forEach(note => {
+          const noteEl = generateNoteDOM(note); // This pulls code from notes-function.js
+          notesEl.appendChild(noteEl)
+        });
+    } else {
+        const emptyMessage = document.createElement('p')
+        emptyMessage.textContent = 'No notes to display'
+        emptyMessage.classList.add('empty-message')
+        notesEl.appendChild(emptyMessage)
+    }
+
+
 };
 
 // Generate the last edited message
