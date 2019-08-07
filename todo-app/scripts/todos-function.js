@@ -25,7 +25,8 @@ const saveTodos = (todo) => localStorage.setItem("todos", JSON.stringify(todos))
 
 
 const renderTodos = (todos, filters) => {
-  const filteredTodos = todos.filter( (todo) => {
+    const todosEl = document.querySelector('#todos')
+    const filteredTodos = todos.filter( (todo) => {
     const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
     const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
     return searchTextMatch && hideCompletedMatch;
@@ -33,10 +34,18 @@ const renderTodos = (todos, filters) => {
 
     const incompleteTodos = filteredTodos.filter((todo) => !todos.completed);
 
-    document.querySelector("#todos").innerHTML = "";
-    document.querySelector("#todos").appendChild(generateSummaryDOM(incompleteTodos));
+    todosEl.innerHTML = ''
+    todosEl.appendChild(generateSummaryDOM(incompleteTodos));
 
-    filteredTodos.forEach((todo) => document.querySelector("#todos").appendChild(generateTodoDOM(todo)));
+    if (filteredTodos.length > 0) {
+        filteredTodos.forEach(todo =>
+            todosEl.appendChild(generateTodoDOM(todo)))
+    } else {
+        const emptyMessage = document.createElement('p')
+        emptyMessage.textContent = 'No todos to show'
+        emptyMessage.classList.add('empty-message')
+        todosEl.appendChild(emptyMessage)
+    }
 };
 
 // RemoveTodo by ID
@@ -62,7 +71,8 @@ const toggleTodo = (id) => {
 // Get the DOM elements for an individual note
 
 const generateTodoDOM = (todo) => {
-    const todoEl = document.createElement('div');
+    const todoEl = document.createElement('label');
+    const containerEl = document.createElement('div');
     const checkButton = document.createElement("input");
     const textEl = document.createElement('span');
     const removeButton = document.createElement('button');
@@ -70,7 +80,7 @@ const generateTodoDOM = (todo) => {
     // Setup todo checkbox
      checkButton.setAttribute('type', 'checkbox')
      checkButton.checked = todo.completed
-     todoEl.appendChild(checkButton);
+     containerEl.appendChild(checkButton);
      checkButton.addEventListener('change', () => {
          toggleTodo(todo.id)
          saveTodos(todos)
@@ -79,10 +89,16 @@ const generateTodoDOM = (todo) => {
     
     // Setup the todo text
      textEl.textContent = todo.text;
-     todoEl.appendChild(textEl);
+     containerEl.appendChild(textEl);
     
-    // Setup the removebutton 
-     removeButton.textContent = 'x'
+    // Setup container
+     todoEl.classList.add('list-item')
+     containerEl.classList.add('list-item__container')
+     todoEl.appendChild(containerEl)
+     
+    // Setup the removeButton 
+     removeButton.textContent = 'remove'
+     removeButton.classList.add('button', 'button--text')
      todoEl.appendChild(removeButton);
      removeButton.addEventListener('click', function(e) {
         removeTodo(todo.id)
@@ -94,9 +110,20 @@ const generateTodoDOM = (todo) => {
 }
 
 // Get the DOM Element for list summary 
-
 const generateSummaryDOM = (incompleteTodos) => {
-  const summary = document.createElement('h2');
-  summary.textContent = `You have ${incompleteTodos.length} todos left`;
-  return summary
+    const summary = document.createElement('h2');
+    let todoText = `You have ${incompleteTodos.length} `
+    if (incompleteTodos.length > 1 ) {
+        todoText += 'todos left'
+    } else if (incompleteTodos.length === 0) {
+        todoText += 'todos left'
+    } else {
+        todoText += 'todo left'
+    }
+    summary.textContent = todoText
+    summary.classList.add('list-title')
+    return summary
 };
+
+// 1. Add a "List-title" class
+// 2. Pluraliza (todos) unless you only have one (todo)

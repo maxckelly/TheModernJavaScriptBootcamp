@@ -15,17 +15,22 @@ document.querySelector('#todo-input').addEventListener('input', (e) => {
   renderTodos(todos, filters)
 })
 
+// 1. Get a trimmed version of the input 
+// 2. Only add a new todo if it has content
 document.querySelector('#todo-form').addEventListener('submit', (e) => {
+  const text = e.target.elements.text.value.trim()
   e.preventDefault() // This cancels the default action by the input 
-  todos.push ({
-    id: uuidv4(),
-    text: e.target.elements.myTodo.value,
-    completed: false
-  })
 
-  saveTodos(todos)
-  renderTodos(todos, filters)
-  e.target.elements.myTodo.value = ''
+  if (text.length > 0) {
+      todos.push({
+        id: uuidv4(),
+        text,
+        completed: false
+      })
+      saveTodos(todos);
+      renderTodos(todos, filters);
+      e.target.elements.text.value = "";
+  }
 })
 
 document.querySelector('#hide-completed').addEventListener('change', (e) => {
