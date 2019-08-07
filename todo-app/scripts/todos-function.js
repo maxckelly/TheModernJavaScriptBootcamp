@@ -124,6 +124,3 @@ const generateSummaryDOM = (incompleteTodos) => {
     summary.classList.add('list-title')
     return summary
 };
-
-// 1. Add a "List-title" class
-// 2. Pluraliza (todos) unless you only have one (todo)
