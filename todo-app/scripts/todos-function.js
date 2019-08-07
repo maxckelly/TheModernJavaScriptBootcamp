@@ -42,7 +42,7 @@ const renderTodos = (todos, filters) => {
             todosEl.appendChild(generateTodoDOM(todo)))
     } else {
         const emptyMessage = document.createElement('p')
-        emptyMessage.textContent = 'No todos to show'
+        emptyMessage.textContent = 'There are no todos to show'
         emptyMessage.classList.add('empty-message')
         todosEl.appendChild(emptyMessage)
     }
