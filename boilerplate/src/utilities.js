@@ -9,9 +9,9 @@
 
 const add = (a, b) => a + b
 
-const name = 'Andrew'
+const name = 'Max'
 
-square = (x) => x * x 
+const square = (x) => x * x 
 
 // below is a way to export everything at once from the bottom. 
 export { add, name, square as default }
