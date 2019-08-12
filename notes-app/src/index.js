@@ -1,18 +1,31 @@
-import { getNotes, createNote, removeNote, updateNote } from './notes.js'
-import { getFilters, setFilters } from './filters.js'
+import { createNote } from './notes.js'
+import { setFilters } from './filters.js'
+import { renderNotes } from './views'
 
-// console.log(getNotes())
-// createNote()
-//removeNote("s");
-// updateNote("7e114e26-2e28-4bc6-8afa-c277fd6f1fd6", {
-//     title: 'Max is awesome',
-//     body: 'This is the body'
-// });
-// console.log(getNotes());
+renderNotes(); // This calls the function before the user interacts with the page.
 
-console.log(getFilters())
-setFilters({
-    searchText: 'Office',
-    sortBy: 'byCreated'
-})
-console.log(getFilters())
+document.querySelector("#create-button").addEventListener("click", e => {
+    const id = createNote()
+    location.assign(`/edit.html#${id}`); // Makes it so if the button is clicked they're redirected.
+});
+
+document.querySelector("#search-text").addEventListener("input", e => {
+    setFilters({
+        searchText: e.target.value
+    })
+    renderNotes();
+}); // This calls when the user interacts with the function.
+
+document.querySelector("#filter-by").addEventListener("change", e => { 
+    setFilters({
+        sortBy: e.target.value
+    })
+    renderNotes();
+});
+
+// This makes it so if the title was changed on the edit note page it will update the note page while tab is open
+window.addEventListener("storage", e => {
+    if (e.key === "notes") {
+        renderNotes();
+    }
+}); 
