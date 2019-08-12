@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="icon" href="/images/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title"> Notes App! </h1>
+            <h2 class="header__subtitle"> Take notes and never forget</h2>
+        </div>
+    </header>
+    <div class="actions">
+        <div class"actions__container">
+            <input id="search-text" type="text" class="input" placeholder="Search your notes here">
+            <select id="filter-by" class="dropdown">
+                <option value="byEdited"> Sort by last edited </option>
+                <option value="byCreated"> Sort by recently created </option>
+                <option value="byAlphabetical"> Sort alphabetically </option>
+            </select>
+        </div>
+    </div>
+    <div class="container">
+        <div id="notes"></div>
+        <p id="edited"></p>
+        <button id="create-button" class="button"> Create Note </button>
+    </div>
+
+
+    
+    <!-- This is a checkbox example
+    <label>  The label tag easily allows us to add text next to the element 
+        <input id="for-fun" type="checkbox"> Check me for fun 
+    </label>
+     -->
+
+   <!-- The below is a form to submit a note 
+    <form id="name-form">
+        <input type="text" placeholder="First Name" name="firstName">
+        <button> Submit </button>
+    </form> 
+    -->
+    <script src="/scripts/index-bundle.js"></script>
+</body>
+
+
+</html>
