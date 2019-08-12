@@ -21,7 +21,8 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
         publicPath: '/scripts/'
-    }
+    }, 
+    devtool: 'source-map'
 }
 
 // Users//mkelly/Desktop//Coding/js-bootcamp/boilerplate/public/scripts
