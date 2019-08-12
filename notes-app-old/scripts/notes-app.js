@@ -19,7 +19,7 @@
 const notes = getSavedNotes() // Pulls function from notes-function.js
 
 const filters = {
-    searchText: '',
+    searchText: '', 
     sortBy: 'byEdited'
 }
 
