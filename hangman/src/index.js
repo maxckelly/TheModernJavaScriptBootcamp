@@ -1,11 +1,6 @@
-import uuidv4 from 'uuid/v4'
 import Hangman from './hangman.js'
 import { getPuzzleOld, getCountry, getLocation, getCurrentCountry, getPuzzle } from './requests.js'
-import validator from 'validator'
 
-
-console.log(uuidv4())
-console.log(validator.isEmail('max@revelthat.com'))
 
 
 const puzzleEl = document.querySelector("#puzzle"); // Selects the id element in html file.
