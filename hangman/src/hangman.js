@@ -5,7 +5,7 @@ class Hangman {
     constructor(word, remainingGuesses) {
         this.word = word.toLowerCase().split("");
         this.remainingGuesses = remainingGuesses;
-        this.guessedLetters = ["job"];
+        this.guessedLetters = [];
         this.status = "Playing";  
     }
 
@@ -58,7 +58,7 @@ class Hangman {
         }
 
         if (isUnique) {
-            this.guessedLetters.push(aGuess);
+            this.guessedLetters = [...this.guessedLetters, guess];
             // bad guess - lose 1 guess
             this.guesses = this.guesses - 1;
             // If empty & good guess:
