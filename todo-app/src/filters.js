@@ -6,14 +6,14 @@ const filters = {
 
 const getFilters = () => filters
 
-const setFilters = (updates) => {
+const setFilters = ({ searchText, hideCompleted}) => {
 
-    if (typeof updates.searchText === 'string') {
-        setFilters.searchText = updates.searchText
+    if (typeof searchText === 'string') {
+        searchText = searchText
     }
 
-    if (typeof updates.hideCompleted === 'boolean') {
-        setFilters.hideCompleted = updates.hideCompleted
+    if (typeof hideCompleted === 'boolean') {
+        hideCompleted = hideCompleted
     }
 }
 
